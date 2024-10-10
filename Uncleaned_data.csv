@@ -1,0 +1,15 @@
+ID,Name,Age,Gender,Department,Salary,Score,Earned Points
+101,John Doe,28,M,Sales,55000,,3
+102,Jane Smith,34,Female,HR,,4.5,4
+103,Mary-Jane,,F,IT,72000,four,6
+104,Chris,45,M,Sales,48000,5,1.098
+105,Anna,31,,IT,53000,3.8,0
+106,Doe,thirty,Male,,60000,,2
+107,Smith,22,F,HR,Fifty Thousand,4,4
+108,Bhakti Raj,,,HR,23000,5,3.45
+109,Rahulsharma,23,Male,IT,,4.2,0.3
+110,ritiKA Sharma,31,F,Sales,45000,,0.008
+111,Kulvinder-Kaur,38,Male,Info Tech,23450,3.5,2.333
+112,John,45,Male,,,2.1,5.634
+113,Lue,,Female,IT,10000,4.6,1
+114,Zhang ,18,,HR,56000,3.3,4
