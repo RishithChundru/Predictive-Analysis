@@ -1,12 +1,12 @@
 a<-read.csv(file.choose())
-
+View(a)
 # Visualising the Polynomial Regression results
 # install.packages('ggplot2')
 library(ggplot2)
 a$Level2 <- a$Level^2
 a$Level3 <- a$Level^3
 a$Level4 <- a$Level^4
-
+View(a)
 # Fitting the polynomial regression model
 poly_reg <- lm(Salary ~ Level + Level2 + Level3 + Level4, data = a)
 ggplot() +
