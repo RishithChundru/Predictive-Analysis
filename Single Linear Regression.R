@@ -4,6 +4,7 @@ plot(x,y)
 relation<-lm(y~x)
 abline(relation,col="red",lwd=2)
 summary(relation)
+summary(relation)$r.squared
 predict(relation,data.frame(x=6.3))
 
 

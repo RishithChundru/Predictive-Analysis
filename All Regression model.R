@@ -8,7 +8,7 @@ plot(a$Sepal.Width,a$Petal.Length)
 rel<-lm(Petal.Length~Sepal.Width,data=a)
 summary(rel)$r.squared
 abline(rel,col="red",lwd=2)
-summary(rel)
+summary(rel)$r.squared
 predict(rel,data.frame(Sepal.Width=3.2))
 
 
@@ -27,6 +27,7 @@ a$Slength=a$Sepal.Length^2
 a$swidth=a$Sepal.Width^3
 a$pwidth=a$Petal.Width^4
 View(a)
+
 plot(a$Sepal.Width,a$Petal.Length)
 rel<-lm(Petal.Length~Slength+swidth+pwidth,data=a)
 summary(rel)$r.squared

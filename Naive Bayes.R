@@ -1,13 +1,15 @@
+# Sms_spam dataset
 a<-read.csv(file.choose())
 View(a)
 str(a)
 a$type=factor(a$type)
+a$type
 install.packages("tm")
 library(tm)
 sms_corpus=VCorpus(VectorSource(a$text))
 print(sms_corpus)
 as.character(sms_corpus[[1]])
-lapply(sms_corpus[1:2],as.character)
+lapply(sms_corpus[1:10],as.character)
 sms_corpus_clean=tm_map(sms_corpus,content_transformer(tolower))
 print(sms_corpus_clean)
 as.character(sms_corpus[[1]])
@@ -20,13 +22,13 @@ sms_corpus_clean=tm_map(sms_corpus_clean,removePunctuation)
 install.packages("SnowballC")
 library(SnowballC)
 sms_corpus_clean=tm_map(sms_corpus_clean,stemDocument)
-sms_corpus_clean=tm_map(sms_corpus_clean,stripWhitespace)
+sms_corpus_clean=tm_map(sms_corpus_clean,stripWhitespace) 
 sms_dtm=DocumentTermMatrix(sms_corpus_clean)
 
 sms_dtm_train=sms_dtm[1:4181,]
 sms_dtm_test=sms_dtm[4182:5574,]
-sms_train_labels=a[1:3902,]$type
-sms_test_labels=a[3903:5574,]$type
+sms_train_labels=a[1:4181,]$type
+sms_test_labels=a[4182:5574,]$type
 prop.table(table(sms_train_labels))
 prop.table(table(sms_test_labels))
 
@@ -46,3 +48,8 @@ install.packages("e1071")
 library(e1071)
 sms_classifier<-naiveBayes(sms_train,sms_train_labels)
 sms_test_pred<-predict(sms_classifier,sms_test)
+
+
+# Calculate accuracy by comparing predictions with actual test labels
+accuracy <- sum(sms_test_pred == sms_test_labels) / length(sms_test_labels)
+print(paste("Accuracy:", round(accuracy * 100, 2), "%"))

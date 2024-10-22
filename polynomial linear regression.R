@@ -1,4 +1,4 @@
-a<-read.csv(file.choose())
+a<-read.csv(file.choose()) # Position_salaries dataset
 View(a)
 # Visualising the Polynomial Regression results
 # install.packages('ggplot2')
