@@ -36,7 +36,7 @@ print(confusion_matrix)
 # Finding out the Accuracy depending upon Confusion matrix
 
 accuracy_naive=sum(diag(confusion_matrix))/sum(confusion_matrix) 
-print(paste("Naive Bayes Accuracy : ", round(accuracy*100,2),"%"))
+print(paste("Naive Bayes Accuracy : ", round(accuracy_naive*100,2),"%"))
 
 # Storing it in the dataframe
 df <- as.data.frame(confusion_matrix)
@@ -91,7 +91,7 @@ ggplot(df, aes(x = Predicted, y = Actual, fill = Count)) +
 
 # Accuracy of Decision tree model
 accuracy_decision <- sum(diag(confusion_matrix1))/sum(confusion_matrix1)
-print(paste("Decision Tree Accuracy : ", round(accuracy1*100,2),"%"))
+print(paste("Decision Tree Accuracy : ", round(accuracy_decision*100,2),"%"))
 
 install.packages("rpart.plot")
 library(rpart.plot)
@@ -167,8 +167,8 @@ a_norm[numeric_cols] <- lapply(a[numeric_cols], normalize)
 
 # Splitting the dataset
 train_idx <- 1:round(0.7 * nrow(a_norm))
-concrete_train <- a_norm[train_idx, ]
-concrete_test <- a_norm[-train_idx, ]
+ann_train <- a_norm[train_idx, ]
+ann_test <- a_norm[-train_idx, ]
 
 # Install and load the neuralnet package
 install.packages("neuralnet")
@@ -176,17 +176,17 @@ library(neuralnet)
 
 # Build Neural Network
 neural_model <- neuralnet(test_preparation_course ~ math_score + reading_score + writing_score,
-                          data = concrete_train,
+                          data = ann_train,
                           hidden = 5,
                           stepmax = 1e6, 
                           rep = 1)
 plot(neural_model)
 
 # Predicting results using the neural network model
-prediction_nn <- predict(neural_model, concrete_test)
+prediction_nn <- predict(neural_model, ann_test)
 
 # Confusion Matrix
-confusion_matrix_nn <- table(concrete_test$test_preparation_course, prediction_nn)
+confusion_matrix_nn <- table(ann_test$test_preparation_course, prediction_nn)
 print(confusion_matrix_nn)
 
 # Calculatin Accuracy

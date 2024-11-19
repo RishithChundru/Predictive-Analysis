@@ -3,6 +3,8 @@ install.packages("cluster")
 library(arules)
 library(cluster)
 iris_1=iris[,-5]
+iris_1
+iris
 set.seed(240)
 kmeans.re<- kmeans(iris_1,centers=2,nstart=20)
 kmeans.re
