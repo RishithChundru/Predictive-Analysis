@@ -1,8 +1,11 @@
 setwd("C:/College PPTs/5th SEM/INT234")
 getwd()
-a<-read.csv("SalesDatafor preprocessingcleaning dataset example.csv")
+a<-read.csv(file.choose())
 View(a)
+sum(is.na(a))
 b<-na.omit(a)
+b
+sum(is.na(b))
 View(b)
 
 # Remove duplicate rows
@@ -11,7 +14,7 @@ data
 
 # Rename a column
 colnames(a)[colnames(a) == "Order.Date"] <- "Date"
-
+View(a)
 # Remove leading/trailing white spaces in a specific column
 a$Customer.Name <- trimws(a$Customer.Name)
 
@@ -36,7 +39,7 @@ View(a)
 # Missing values for categorical variables by random value from each variable
 # Convert to factor if not already
 a$Order.Priority <- as.factor(a$Order.Priority)
-
+a$Order.Priority
 # Replace NA values with random levels from the factor
 a$Order.Priority[is.na(a$Order.Priority)] <- sample(
   levels(a$Order.Priority),
@@ -47,3 +50,13 @@ a$Order.Priority[is.na(a$Order.Priority)] <- sample(
 # View the result
 View(a)
 
+
+a$Unit.Price<-(a$Unit.Price-min(a$Unit.Price))/(max(a$Unit.Price)-min(a$Unit.Price))
+a$Unit.Price
+
+a$Profit<-scale(a$Profit)
+a$profit
+
+
+a$Order.Priority<-factor(a$Order.Priority)
+a$Order.Priority

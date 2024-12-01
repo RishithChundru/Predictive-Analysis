@@ -6,7 +6,7 @@ df
 install.packages("sqldf")
 library(sqldf)
 sqldf("select * from df")
-df<-sqldf(c("insert into df values(10,'rishith',88)","select * from df"))
+df<-sqldf(c("insert into df values(10,'r',88)","select * from df"))
 df
 df<-sqldf(c("delete from df where id=3","select * from df"))
 View(df)
@@ -49,3 +49,4 @@ sqldf("select `Sepal.Width` as sw from data")
 sqldf("select max([Sepal.Width]) as maxvalue from data")
 sqldf("select sum([Petal.Length]) as sumpl from data")
 sqldf("select * from data where species='versicolor'")
+
