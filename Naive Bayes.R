@@ -24,7 +24,7 @@ library(SnowballC)
 sms_corpus_clean=tm_map(sms_corpus_clean,stemDocument)
 sms_corpus_clean=tm_map(sms_corpus_clean,stripWhitespace) 
 sms_dtm=DocumentTermMatrix(sms_corpus_clean)
-
+str(sms_dtm)
 sms_dtm_train=sms_dtm[1:4181,]
 sms_dtm_test=sms_dtm[4182:5574,]
 sms_train_labels=a[1:4181,]$type

@@ -6,5 +6,6 @@ plot(a$weight,a$size)
 relation<-lm(size~weight,data=a)
 abline(relation,col="red",lwd=2)
 summary(relation)
-predict(relation,data.frame(weight=4.1))
+summary(relation)$r.squared
+predict(relation,weight=4.1)
 
