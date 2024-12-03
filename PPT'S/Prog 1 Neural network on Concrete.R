@@ -1,5 +1,5 @@
 getwd()
-concrete = read.csv("Concrete_Data.csv")
+concrete = read.csv(file.choose())
 View(concrete)
 str(concrete)
 #total 9 variables are there. one is 'strength' dependent on all the 
@@ -39,6 +39,7 @@ plot(concrete_model)
 #and a single output node that predicts the concrete strength.Lower errors means better prediction
 
 model_results = compute(concrete_model,concrete_test[1:8])
+model_results
 #It returns a list with two components: $neurons, which stores the
 #neurons for each layer in the network, and 
 #$net.result, which stores the predicted values.

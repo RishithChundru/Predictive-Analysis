@@ -2,7 +2,7 @@
 
 # Importing the dataset
 getwd()
-dataset = read.csv("Position_Salaries.csv")
+dataset = read.csv(file.choose())
 View(dataset)
 dataset = dataset[2:3]
 dataset

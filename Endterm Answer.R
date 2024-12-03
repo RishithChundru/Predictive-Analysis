@@ -1,0 +1,28 @@
+install.packages("rpart")
+install.packages("rpart.plot")
+library(rpart)
+library(rpart.plot)
+a<-read.csv(file.choose())
+a
+View(a)
+sum(is.na(a))
+a<-a[!duplicated(a),]
+a
+normalize<-function(x){
+  return((x-min(x))/(max(x)-min(x)))
+}
+a$LB<-normalize(a$LB)
+a$AC<-normalize(a$AC)
+a$FM<-normalize(a$FM)
+trainingIndex<-sample(1:nrow(a),0.7*nrow(a))
+a_train<-a[trainingIndex,]
+a_test<-a[-trainingIndex,]
+target<-NSP~LB+AC+FM
+model<-rpart(target,data=a_train)
+rpart.plot(model)
+model_pred<-predict(model,a_test)
+confusion_matrix<-table(predictions=model_pred,Actual=a_test$NSP)
+confusion_matrix
+accuracy<-sum(diag(confusion_matrix))/sum(confusion_matrix)
+misclassification_error<-1-accuracy
+print(paste("Misclassification Error: ",round(misclassification_error*100,2)," %"))

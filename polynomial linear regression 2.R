@@ -10,3 +10,4 @@ summary(model)
 
 ggplot(df,aes(x=hrs,y=res))+ geom_jitter(height=.05, alpha=.1)+
   geom_smooth(method="glm", method.args=list(family="binomial"),se= FALSE)
+

@@ -1,5 +1,6 @@
 install.packages("arules")
 library(arules)
+library(tm)
 getwd()
 setwd("C:/College PPTs/5th SEM/INT234")
 groceries <- read.transactions("groceries.csv", sep = ",")
@@ -17,6 +18,7 @@ itemFrequency(groceries[, 1:3])
 #the first three items in the grocery data
 
 itemFrequencyPlot(groceries, support = 0.1)
+
 #plot the bar chart using atleast 10% of support
 
 itemFrequencyPlot(groceries, topN = 20)
